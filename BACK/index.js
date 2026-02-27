@@ -1,18 +1,26 @@
-//! crea una constante con el puerta local o el asignado en las variables globales de la aplicacion
-import app from './app.js';
-import dotenv from 'dotenv';//importa la libreria dotenv
-dotenv.config();//activa las variables del archivo .env
-const PORT = 3000 || process.env.APP_PORT;
-import ('dotenv').config()
+// index.js
 
-//!Encendemos el servicio - prendemos la API
-app.listen(PORT,()=>{
-    console.log(`Servidor corriendo en: ${PORT}`);
-    console.log(process.env);//TODAS LAS VARIABLES DE ENTORNO
-    console.log(process.env.OS);//SISTEMA OPERATIVO EN DONDE SE EJECUTA NODE
-    console.log(process.env.NUMBER_OF_PROCESSORS);//NUMERO DE PROCESADORES DEL SERVIDOR DONDE SE EJECUTA NODE
-    console.log(process.env.NODE);//RUTA DONDE SE ENCUENTRA EL EJECUTABLE DE NODE EN EL SERVIDOR
-    console.log(process.env.COMPUTERNAME);//NOMNBRE DEL SERVIDOR
-    console.log(process.env.HOST);//VARIABLE DE USUARIO CREADA EN EL ARCHIVO .ENV
-    console.log(process.env.DB_BASE);//VARIABLE DE USUARIO CREADA EN EL ARCHIVO .ENV
+//! Importamos app y dotenv
+import app from './app.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const PORT = process.env.APP_PORT || 3000;
+
+//! Encendemos el servicio 
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en el puerto: ${PORT}`);
+
+    //! Mostramos variables de entorno
+    console.log('Todas las variables de entorno:', process.env);
+    
+    console.log('Sistema operativo:', process.env.OS);
+    console.log('Número de procesadores:', process.env.NUMBER_OF_PROCESSORS);
+    console.log('Ruta de Node.js:', process.env.NODE);
+    console.log('Nombre del servidor:', process.env.COMPUTERNAME);
+
+    //! Variables definidas por el usuario en el .env
+    console.log('HOST:', process.env.HOST);
+    console.log('DB_BASE:', process.env.DB_BASE);
 });
