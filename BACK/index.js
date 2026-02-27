@@ -3,7 +3,7 @@ import app from './app.js';
 import dotenv from 'dotenv';//importa la libreria dotenv
 dotenv.config();//activa las variables del archivo .env
 const PORT = 3000 || process.env.APP_PORT;
-require ('dotenv').config()
+require ('dotenv').config
 
 //!Encendemos el servicio - prendemos la API
 app.listen(PORT,()=>{
